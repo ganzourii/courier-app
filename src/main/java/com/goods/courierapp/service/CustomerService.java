@@ -9,4 +9,6 @@ public interface CustomerService {
     void deleteById (int theId);
 
     Customer findById(int customerId);
+
+    Customer findByUsername(String username);
 }

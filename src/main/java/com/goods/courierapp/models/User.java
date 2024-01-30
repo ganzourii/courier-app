@@ -33,7 +33,6 @@ public class User {
     private String userType;
 
     @Column(name = "created_at")
-
     private LocalDateTime createdAt;
 
     public User() {
@@ -48,6 +47,11 @@ public class User {
         this.passwordHash = passwordHash;
         this.userType = userType;
         this.createdAt = createdAt;
+    }
+
+    @PrePersist
+    public void prePersistCreatedAt() {
+        createdAt = LocalDateTime.now();
     }
 
     public void setId(int id) {
@@ -120,14 +124,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getType() {
-        return userType;
-    }
-
-    public void setType(String type) {
-        this.userType = type;
     }
 
     @Override

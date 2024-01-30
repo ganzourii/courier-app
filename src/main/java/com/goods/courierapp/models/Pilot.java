@@ -12,7 +12,7 @@ public class Pilot {
     private int pilotId;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", unique = true)
     private User user;
 
