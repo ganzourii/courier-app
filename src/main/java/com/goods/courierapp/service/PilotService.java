@@ -9,4 +9,6 @@ public interface PilotService {
     void deleteById (int theId);
 
     Pilot findById(int pilotId);
+
+    Pilot findByUsername(String username);
 }

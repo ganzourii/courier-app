@@ -36,8 +36,25 @@ public class PilotServiceImpl implements PilotService{
         }
         else
         {
-            throw new RuntimeException("Did not find employee id: " + pilotId );
+            throw new RuntimeException("Did not find pilot id: " + pilotId );
         }
         return thePilot;
     }
+
+    @Override
+    public Pilot findByUsername(String username)
+    {
+        Optional<Pilot> result = pilotRepository.findByUsername(username);
+        Pilot thePilot = null;
+        if(result.isPresent())
+        {
+            thePilot = result.get();
+        }
+        else
+        {
+            throw new RuntimeException("Did not find pilot username: " + username );
+        }
+        return thePilot;
+    }
+
 }

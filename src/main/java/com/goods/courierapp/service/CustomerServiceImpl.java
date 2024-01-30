@@ -4,6 +4,7 @@ import com.goods.courierapp.dao.CustomerRepository;
 import com.goods.courierapp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -37,8 +38,25 @@ public class CustomerServiceImpl implements CustomerService {
         }
         else
         {
-            throw new RuntimeException("Did not find employee id: " + customerId );
+            throw new RuntimeException("Did not find customer id: " + customerId );
         }
         return theCustomer;
     }
+
+    @Override
+    public Customer findByUsername(String username) {
+
+        Optional<Customer> result = customerRepository.findByUsername(username);
+        Customer theCustomer = null;
+        if(result.isPresent())
+        {
+            theCustomer = result.get();
+        }
+        else
+        {
+            throw new RuntimeException("Did not find customer username: " + username );
+        }
+        return theCustomer;
+    }
+
 }

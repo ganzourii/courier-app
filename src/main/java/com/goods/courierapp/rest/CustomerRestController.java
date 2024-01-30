@@ -1,6 +1,7 @@
 package com.goods.courierapp.rest;
 
 import com.goods.courierapp.models.Customer;
+import com.goods.courierapp.models.Pilot;
 import com.goods.courierapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +23,29 @@ public class CustomerRestController {
     }
 
     @GetMapping("/customers/{customerId}")
-    public Customer getEmployee (@PathVariable int customerId)
+    public Customer getCustomer (@PathVariable int customerId)
     {
         Customer theCustomer = customerService.findById(customerId);
 
         if( theCustomer == null)
-            throw new RuntimeException("Employee with id: "+customerId+" not found!");
+            throw new RuntimeException("Customer with id: "+customerId+" not found!");
 
         return theCustomer;
     }
-    @PostMapping("/customers")
-    public Customer addEmployee (@RequestBody Customer theCustomer)
+    @GetMapping("/customers/username/{username}")
+    public Customer getCustomerByUsername (@PathVariable String username)
     {
-        theCustomer.setCustomerId(0);
+        Customer theCustomer = customerService.findByUsername(username);
+
+        if( theCustomer == null)
+            throw new RuntimeException("Customer with username: "+username+" not found!");
+
+        return theCustomer;
+    }
+
+    @PostMapping("/customers")
+    public Customer addCustomer (@RequestBody Customer theCustomer)
+    {
 
         Customer dbCustomer = customerService.save(theCustomer);
 
@@ -42,16 +53,16 @@ public class CustomerRestController {
     }
 
     @DeleteMapping("/customers/{customerId}")
-    public String deleteEmployee (@PathVariable int customerId)
+    public String deleteCustomer (@PathVariable int customerId)
     {
         Customer theCustomer = customerService.findById(customerId);
 
         if(theCustomer == null)
-            throw  new RuntimeException("This employee doesn't exist!!");
+            throw  new RuntimeException("This customer doesn't exist!!");
 
         customerService.deleteById(customerId);
 
-        return "Deleted employee id: " + customerId ;
+        return "Deleted customer id: " + customerId ;
     }
 
 }
