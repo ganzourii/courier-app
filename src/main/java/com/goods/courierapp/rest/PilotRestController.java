@@ -23,7 +23,7 @@ public class PilotRestController {
     @GetMapping("/pilots/test")
     public String test ()
     {
-        return " I am testing apis from pilots";
+        return " Thanks for testing apis from pilots";
     }
 
     @GetMapping("/pilots/{pilotId}")
@@ -55,6 +55,15 @@ public class PilotRestController {
 
         return dbPilot;
     }
+
+    @PutMapping("/pilots")
+    public Pilot updatePilot (@RequestBody Pilot thePilot)
+    {
+        Pilot dbPilot = pilotService.save(thePilot);
+
+        return dbPilot;
+    }
+
 
     @DeleteMapping("/pilots/{pilotId}")
     public String deletePilot(@PathVariable int pilotId)

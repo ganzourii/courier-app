@@ -51,6 +51,14 @@ public class CustomerRestController {
 
         return dbCustomer;
     }
+    @PutMapping("/customers")
+    public Customer updateCustomer (@RequestBody Customer theCustomer)
+    {
+
+        Customer dbCustomer = customerService.save(theCustomer);
+
+        return dbCustomer;
+    }
 
     @DeleteMapping("/customers/{customerId}")
     public String deleteCustomer (@PathVariable int customerId)
