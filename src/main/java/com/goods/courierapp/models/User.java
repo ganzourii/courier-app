@@ -29,8 +29,10 @@ public class User {
     @Column(name="password_hash")
     private String passwordHash;
 
-    @Column(name = "user_type")
-    private String userType;
+    @Column(name = "user_role")
+    private String userRole;
+
+    private boolean active;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -38,14 +40,15 @@ public class User {
     public User() {
     }
 
-    public User(String username, String firstName, String lastName, String email, String phoneNumber, String passwordHash, String userType, LocalDateTime createdAt) {
+    public User(String username, String firstName, String lastName, String email, String phoneNumber, String passwordHash, String userRole, boolean active, LocalDateTime createdAt) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.passwordHash = passwordHash;
-        this.userType = userType;
+        this.userRole = userRole;
+        this.active = active;
         this.createdAt = createdAt;
     }
 
@@ -66,12 +69,12 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getUserRole() {
+        return userRole;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -126,6 +129,14 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -136,7 +147,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
-                ", userType='" + userType + '\'' +
+                ", userRole='" + userRole + '\'' +
+                ", active=" + active +
                 ", createdAt=" + createdAt +
                 '}';
     }
