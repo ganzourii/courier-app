@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Shipment Status</title>
+</head>
+<style>
+
+  /* Additional styling for the div */
+  .cover-div {
+    position: relative; /* Ensure positioning context */
+    width: 100%; /* Set width of the div */
+    height: 100vh; /* Set height of the div */
+    color: grey;
+    background-color: #F98B15;
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+  }
+
+  .content {
+    font-family: "Raleway", sans-serif;
+      font-optical-sizing: auto;
+    margin-left: 440px;
+    font-size: 24px; /* Set the font size to 24 pixels */
+  font-weight: 800;
+  font-style: normal;
+      color: white;
+        }
+
+        // <uniquifier>: Use a unique and descriptive class name
+
+.raleway-font {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: bold;
+}
+  ::placeholder {
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+    font-weight: 500;
+      font-optical-sizing: auto;
+      background-color: transparent;
+  }
+  button
+  {
+  background-color: #F98B15;
+  font-family: "Raleway", sans-serif;
+  font-style: bold;
+  font-weight: 900;
+  }
+ button:hover {
+ background-color: #efa351;
+  }
+
+.custom-btn-size {
+
+}
+</style>
+
+
+<header >
+    <nav class="navbar navbar-light" style="background-color: #F98B15; ">
+        <a style="margin-top: -10px; margin-bottom: -25px;" href="#">
+            <img src="https://i.imgur.com/8mKgg8i.png" />
+            <!--eplace path/to/your/logo.png with your logo path -->
+        </a>
+    </nav>
+</header>
+
+<body>
+
+<div class="cover-div">
+    <div>
+        <br><br><br><br>
+        <h2 class="content">Track You Shipment</h2>
+        <form th:action="@{/shipments/trackNumber}" method="get" class="form-inline">
+            <div style="margin-bottom: 10px;">
+                <input style=" width: 598px; height: 57px; margin-left: 440px;" type="number" name="trackNumber" class="form-control" placeholder="Enter your tracking number...">
+                <button style=" font-size: 18px; font-weight: 500; margin-left: -110px; border: 3px solid white; border-radius: 5px; width: 105px; height: 52px; " type="submit" class="btn text-white raleway-font ">Track</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
+
